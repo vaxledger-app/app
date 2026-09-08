@@ -6,6 +6,8 @@ Immunization history connected by FinchNode. [Explore FinchNode](https://finchno
 
 ## What this app does
 
+Search vaccine entries, review source dates and CVX codes, and export the filtered fictional ledger as JSON.
+
 A standalone, responsive application for exploring a fixed **fictional** patient record. It calls FinchNode's live public synthetic API directly from your browser. Every clinical value comes from the API; there is no invented patient history, treatment advice, or real patient connection.
 
 ## Run locally
@@ -48,3 +50,7 @@ Semantic headings, labeled controls, keyboard focus, visible loading/error feedb
 ## License
 
 MIT. FinchNode and source-system names belong to their respective owners. This is an independent demonstration, not a claim of endorsement.
+
+## Optional domain
+
+`vaxledgerapp.com` was unregistered in the .com registry on 2026-09-08. This is an availability signal, not a reservation; verify the registrar offer before purchasing. No domain has been bought.
