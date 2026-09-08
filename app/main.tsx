@@ -1,0 +1,11 @@
+import React,{useEffect,useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import {RefreshCw,ArrowUpRight,Command} from 'lucide-react';
+import {request,validateRecord} from './data.mjs';
+import config from './config.json';
+import View from './view';
+import './styles.css';
+function App(){const[data,setData]=useState<any>(null),[error,setError]=useState(''),[loading,setLoading]=useState(true),[revision,setRevision]=useState(0);
+useEffect(()=>{const controller=new AbortController();setLoading(true);setError('');setData(null);request('/patients/patient-demo-001/records',{signal:controller.signal}).then(validateRecord).then(setData).catch(e=>{if(!controller.signal.aborted)setError(e.message)}).finally(()=>{if(!controller.signal.aborted)setLoading(false)});return()=>controller.abort()},[revision]);
+return <div data-theme={config.slug} className="app"><a className="skip" href="#workspace">Skip to workspace</a><header className="masthead"><a href="/" className="brand"><Command size={25}/>{config.title}</a><span className="demo">Fictional record · Interactive demo</span><a className="source-link" href="https://finchnode.com/developers/demo-api" target="_blank" rel="noreferrer">About the data <ArrowUpRight size={16}/></a></header><main id="workspace"><div className="page-title"><div><p className="eyebrow">{config.title} / a different perspective</p><h1>{config.description}</h1></div><button className="secondary refresh" onClick={()=>setRevision(n=>n+1)} disabled={loading}><RefreshCw size={16}/> Refresh data</button></div>{loading?<div className="loading" role="status"><span className="loading-mark"/>Loading the fictional record from FinchNode…</div>:error?<div className="error" role="alert"><h2>We couldn't load this record</h2><p>{error}</p><button onClick={()=>setRevision(n=>n+1)}>Try again</button></div>:<><div className="patient-strip"><strong>Morgan Rivera</strong><span>Fictional patient</span><span>Northstar Health · Synthetic source</span><span className="api-status">Public API connected</span></div><View data={data}/></>}</main><footer><span>{config.attribution} <a href="https://finchnode.com" target="_blank" rel="noreferrer">Explore FinchNode ↗</a></span><span>Demo only. Not for clinical use.</span></footer></div>}
+createRoot(document.getElementById('root')!).render(<App/>);

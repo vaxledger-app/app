@@ -1,0 +1,7 @@
+import React,{useEffect} from 'react';
+import {Checkbox} from '@/components/ui/checkbox';
+import {label,date,formatDate,status,quantity} from './data.mjs';
+export function Check({checked,onChange,children}:any){return <label className="check"><Checkbox checked={checked} onCheckedChange={onChange}/><span>{children}</span></label>}
+export function Record({r,children}:any){return <article className="record"><div className="record-top"><span className="eyebrow">{r.resourceType}</span><span className="tag">{status(r)}</span></div><h3>{label(r)}</h3><p className="muted">{formatDate(date(r))}</p>{r.valueQuantity||r.component?<strong className="reading">{quantity(r)}</strong>:null}{children}</article>}
+export function useTool(name:string,description:string,execute:any,deps:any[]){useEffect(()=>{const context=(document as any).modelContext;if(!context?.registerTool)return;const lifecycle=new AbortController();try{Promise.resolve(context.registerTool({name,description,inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute:(input:any)=>{if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).length)throw new Error('This read tool accepts only an empty object.');return execute()}},{signal:lifecycle.signal})).catch(()=>{});}catch{}return()=>lifecycle.abort()},deps)}
+export function Empty(){return <p className="empty" role="status">No matching records in this fictional dataset.</p>}
