@@ -1,62 +1,49 @@
 # VaxLedger
 
-[Open the live demo](https://vaxledger.onrender.com/) · [Source repository](https://github.com/vaxledger-app/app)
+A simple ledger of recorded immunizations. Immunization history connected by FinchNode.
 
-A simple ledger of recorded immunizations.
+**Site:** https://vaxledger.onrender.com/  
+**Repository:** https://github.com/vaxledger-app/app
 
-Immunization history connected by FinchNode. [Explore FinchNode](https://finchnode.com).
+## Production integration
 
-## What this app does
+The previous synthetic demo integration has been removed. This client requests real patient-authorized records using [FinchNode production](https://finchnode.com/openapi.yaml) through the [shared connection service](https://github.com/visitquill/finchapps-connect). It never calls the public demo API or falls back to fixture data.
 
-Search vaccine entries, review source dates and CVX codes, and export the filtered fictional ledger as JSON.
+Production activation is pending operator legal/privacy details and a server-side live key plus webhook signing secret. Until that is complete, connecting fails closed with an explicit setup message. Deployment of this code alone is not evidence of a completed real EHR connection.
 
-A standalone, responsive application for exploring a fixed **fictional** patient record. It calls FinchNode's live public synthetic API directly from your browser. Every clinical value comes from the API; there is no invented patient history, treatment advice, or real patient connection.
+## Use
 
-## Run locally
+Choose record categories, click **Connect my EHR**, and complete FinchNode Hosted Connect and your own provider sign-in. Consent identifies **FinchApps Personal Health Tools**, the shared application behind these ten sites. Return here to view the authorized record. Each visitor session is isolated to this site's origin and expires after 30 minutes; free service restarts can end it earlier. Reconnect if necessary.
 
-Requires Node.js 22.13 or newer.
+Immunization ledger. Source names, dates, units, missing categories and partial sync warnings come from the production response. No patient identity, provider, measurement or connection is invented. FHIR Trail shows FinchNode's normalized records derived from FHIR, not an untouched FHIR bundle. ConsentLoom displays actual consent metadata. SourceWeave lists only the sources returned with the authorized record.
+
+End this session removes local access. Revoke sharing or request deletion through [FinchNode data controls](https://finchnode.com/me). Sharing consent is for the common application, so revocation can affect all ten tools. Exported or printed copies remain on the user's device.
+
+## Local development
+
+Node 22.13+:
 
 ```sh
 npm ci
 npm run dev
+npm test
+npm run build
 ```
 
-Build with `npm run build`; preview with `npm start`. The deployable folder is `dist/`.
+The build outputs `dist/`. This is a React/Vite static frontend with responsive layouts, keyboard controls, visible focus styles and reduced-motion support. Development runs do not bypass production origin restrictions. To exercise authentication locally, run the backend's injected mock tests; do not relax its production allowlist or embed keys in the client.
 
-## Deploy free on Render
+## Render
 
-Create a **Static Site**, select this public repository and branch `main`, set build command to `npm ci && npm run build`, and publish directory to `dist`. A `render.yaml` Blueprint is included with security headers. No environment variables or API keys are needed. Render provides the HTTPS onrender.com address. Static sites share workspace bandwidth and build-minute limits; see [Render's free hosting documentation](https://render.com/docs/free).
+Create a free Static Site from this repository, build with `npm ci && npm run build`, and publish `dist`. The supplied `render.yaml` documents the service and security headers. Public-repository deployments require a manual deploy after pushing a commit. The separate Node connection service runs on Render's free plan and may sleep.
 
-## Data and security
+CSP `connect-src` must allow only `https://finchapps-connect.onrender.com`. Deploy the backend and configure its secret environment before enabling live connections. **Never add API keys to Vite variables, source, browser storage, logs, README examples or Git.** No frontend environment secret is required.
 
-Base URL: `https://api.finchnode.com/demo/v1`. Patient: `patient-demo-001`. [API contract](https://finchnode.com/demo-openapi.json).
+## Privacy and verification
 
-The application accepts only responses explicitly marked synthetic. It sends no credentials, collects no real medical information, and has no analytics or backend. Session selections remain in memory and reset on refresh. Downloads contain synthetic data only. API failures show an error and an explicit retry; no fallback silently replaces live data. The public API is rate limited, so avoid polling.
+Read [the data-handling notice](https://vaxledger.onrender.com/privacy.html). No clinical record is saved in browser storage; visible data is held in memory, cleared on hiding the page, and periodically revalidated. No browser agent tools expose medical data. Unit tests validate production envelopes and preserve source values. Backend tests cover origin/session isolation, scope checks, invalid environments, expiration and signed revocation without using real medical data.
 
-**Never add production API keys to browser code, build variables, URLs, or commits.** A production integration requires a separately secured backend, patient authorization, application consent, and an appropriate privacy/security review. This demo is not a medical device or clinical tool.
+A real patient must perform their own EHR authentication and consent; these tests do not claim successful patient connectivity. Availability varies by healthcare organization.
 
-## Project structure
+## Domain candidate
 
-- `app/main.tsx`: application shell and API loading
-- `app/view.tsx`: this application's interaction and layout
-- `app/data.mjs`: response validation and FHIR display helpers
-- `app/styles.css`: responsive theme and print styles
-- `app/config.json`: name and FinchNode attribution
-- `tests/`: data contract and error-path checks
-- `render.yaml`: static hosting configuration
-
-## Accessibility
-
-Semantic headings, labeled controls, keyboard focus, visible loading/error feedback, responsive layouts, and reduced-motion support. Charts preserve the underlying values as text. Local session state is intentionally ephemeral.
-
-## License
-
-MIT. FinchNode and source-system names belong to their respective owners. This is an independent demonstration, not a claim of endorsement.
-
-## Optional domain
-
-`vaxledgerapp.com` was unregistered in the .com registry on 2026-09-08. This is an availability signal, not a reservation; verify the registrar offer before purchasing. No domain has been bought.
-
-## Updating the hosted app
-
-This deployment uses Render’s Public Git Repository option. After pushing a change, open the Render service and choose **Manual Deploy → Deploy latest commit**. Automatic deploys and previews for public repository URLs require a Blueprint setup. The hosted site has Content-Security-Policy, Referrer-Policy, and X-Content-Type-Options headers configured.
+`vaxledgerapp.com` was available on September 8, 2026; Porkbun displayed $11.08 for initial registration and renewal. No domain was purchased. Availability and price can change. Add it to Render and the backend's explicit origin allowlist before use.
