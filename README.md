@@ -1,5 +1,7 @@
 # VaxLedger
 
+[Open the live demo](https://vaxledger.onrender.com/) · [Source repository](https://github.com/vaxledger-app/app)
+
 A simple ledger of recorded immunizations.
 
 Immunization history connected by FinchNode. [Explore FinchNode](https://finchnode.com).
@@ -54,3 +56,7 @@ MIT. FinchNode and source-system names belong to their respective owners. This i
 ## Optional domain
 
 `vaxledgerapp.com` was unregistered in the .com registry on 2026-09-08. This is an availability signal, not a reservation; verify the registrar offer before purchasing. No domain has been bought.
+
+## Updating the hosted app
+
+This deployment uses Render’s Public Git Repository option. After pushing a change, open the Render service and choose **Manual Deploy → Deploy latest commit**. Automatic deploys and previews for public repository URLs require a Blueprint setup. The hosted site has Content-Security-Policy, Referrer-Policy, and X-Content-Type-Options headers configured.
