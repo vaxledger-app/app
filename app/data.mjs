@@ -7,7 +7,7 @@ export function validateRecord(d){
  return {...d,record};
 }
 export async function request(path,options={}){
- const {token,...rest}=options;const r=await fetch(API+path,{...rest,credentials:'omit',cache:'no-store',headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{}),...rest.headers},signal:rest.signal?AbortSignal.any([rest.signal,AbortSignal.timeout(45000)]):AbortSignal.timeout(45000)});
+ const {token,...rest}=options;const r=await fetch(API+path,{...rest,credentials:'omit',cache:'no-store',headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{}),...rest.headers},signal:rest.signal?AbortSignal.any([rest.signal,AbortSignal.timeout(90000)]):AbortSignal.timeout(90000)});
  const body=await r.json();if(!r.ok)throw Object.assign(new Error(body.error||'The connection could not respond. Please retry.'),{status:r.status});return body;
 }
 export const label=r=>typeof r?.name==='string'?r.name:r?.substance||r?.description||(typeof r?.type==='string'?r.type:null)||r?.codes?.find(c=>c.display)?.display||r?.resourceType||'Unnamed record';
