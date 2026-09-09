@@ -2,7 +2,7 @@
 
 Search recorded immunizations and export a personal vaccination history with VaxLedger. Review source dates and details without inferring missing doses.
 
-**Site:** https://vaxledger.onrender.com/  
+**Site:** https://vaxledgerapp.com/
 **Repository:** https://github.com/vaxledger-app/app
 
 ## Production integration
@@ -45,20 +45,20 @@ CSP `connect-src` must allow only `https://finchapps-connect.onrender.com`. Depl
 
 ## Privacy and verification
 
-Read [the data-handling notice](https://vaxledger.onrender.com/privacy.html). No clinical record is saved in browser storage; visible data is held in memory, cleared on hiding the page, and periodically revalidated. No browser agent tools expose medical data. Unit tests validate production envelopes and preserve source values. Backend tests cover origin/session isolation, scope checks, invalid environments, expiration and signed revocation without using real medical data.
+Read [the data-handling notice](https://vaxledgerapp.com/privacy.html). No clinical record is saved in browser storage; visible data is held in memory, cleared on hiding the page, and periodically revalidated. No browser agent tools expose medical data. Unit tests validate production envelopes and preserve source values. Backend tests cover origin/session isolation, scope checks, invalid environments, expiration and signed revocation without using real medical data.
 
 A real patient must perform their own EHR authentication and consent; these tests do not claim successful patient connectivity. Availability varies by healthcare organization.
 
-## Domain candidate
+## Custom domain
 
-`vaxledgerapp.com` was available on September 8, 2026; Porkbun displayed $11.08 for initial registration and renewal. No domain was purchased. Availability and price can change. Add it to Render and the backend's explicit origin allowlist before use.
+`vaxledgerapp.com` is registered through Squarespace and assigned to this Render site. DNS uses an apex A record pointing to `216.24.57.1` and a `www` CNAME pointing to `vaxledger.onrender.com`. Render redirects `www` to the apex domain and manages HTTPS certificates.
 
 <!-- public-discovery -->
 ## Public guide and project context
 
-[An immunization history is not a vaccination schedule](https://vaxledger.onrender.com/guides/immunization-history-is-not-a-schedule.html) — Why VaxLedger is a searchable register of returned records, and what to check before using an export.
+[An immunization history is not a vaccination schedule](https://vaxledgerapp.com/guides/immunization-history-is-not-a-schedule.html) — Why VaxLedger is a searchable register of returned records, and what to check before using an export.
 
-[Search VaxLedger guides](https://vaxledger.onrender.com/guides/) · [About the site](https://vaxledger.onrender.com/about.html) · [Sitemap](https://vaxledger.onrender.com/sitemap.xml)
+[Search VaxLedger guides](https://vaxledgerapp.com/guides/) · [About the site](https://vaxledgerapp.com/about.html) · [Sitemap](https://vaxledgerapp.com/sitemap.xml)
 
 VaxLedger is a standalone product with its own interface, documentation and repository, prepared for independent business operation and continued development. Its FinchNode integration is documented in the code. Live production activation remains pending.
 
@@ -66,7 +66,7 @@ VaxLedger is a standalone product with its own interface, documentation and repo
 
 Edit `content/seo.json` for reviewed article text and site metadata. `npm run build` generates public HTML pages, a sitemap, social metadata and structured data, then prerenders the actual React homepage. `npm run test:seo` checks the built crawl surface after a build. Public guide search filters only public text in the browser; no patient data or search analytics enter the index.
 
-Keep canonical URLs on the deployed origin until a custom domain is registered and configured. Add only public, canonical pages to the sitemap. Validate links, mobile layout and the built HTML after editorial changes. Search engine indexing and rich results are not guaranteed.
+Keep canonical URLs on the custom domain configured in `content/seo.json`. Add only public, canonical pages to the sitemap. Validate links, mobile layout and the built HTML after editorial changes. Search engine indexing and rich results are not guaranteed.
 
 ## Independent business handoff
 

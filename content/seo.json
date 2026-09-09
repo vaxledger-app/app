@@ -11,7 +11,7 @@
   "renderStatus": "live",
   "organizationSlug": "vaxledger-app",
   "repository": "https://github.com/vaxledger-app/app",
-  "liveUrl": "https://vaxledger.onrender.com/",
+  "liveUrl": "https://vaxledgerapp.com/",
   "homepage": "individually designed full website",
   "importRoute": "/#/import",
   "subject": "Immunization record search & personal export",
@@ -33,7 +33,7 @@
     ],
     [
       "Keep the source date in the conversation",
-      "An entry’s date and supplied vaccine details help distinguish records that might otherwise look similar. A readable list makes those fields easier to review, but it does not certify that an entry meets a school, travel or employment requirement. Requirements and acceptable evidence belong to the organization requesting them."
+      "An entry\u2019s date and supplied vaccine details help distinguish records that might otherwise look similar. A readable list makes those fields easier to review, but it does not certify that an entry meets a school, travel or employment requirement. Requirements and acceptable evidence belong to the organization requesting them."
     ],
     [
       "Missing is a data boundary",
@@ -41,7 +41,7 @@
     ],
     [
       "A connection behind the ledger",
-      "VaxLedger’s record adapter is built for FinchNode patient-authorized data. A separate server handles the production credential and temporary sessions; the register displays the authorized result. Live activation is pending, so the deployed code should not be mistaken for evidence that a visitor’s source is already connected."
+      "VaxLedger\u2019s record adapter is built for FinchNode patient-authorized data. A separate server handles the production credential and temporary sessions; the register displays the authorized result. Live activation is pending, so the deployed code should not be mistaken for evidence that a visitor\u2019s source is already connected."
     ],
     [
       "Use an export as a personal reference",
