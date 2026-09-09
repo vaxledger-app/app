@@ -163,6 +163,82 @@
           "url": "https://github.com/vaxledger-app/app/blob/main/app/view.tsx"
         }
       ]
+    },
+    {
+      "slug": "evaluate-immunization-source-coverage",
+      "title": "How to evaluate source coverage for an immunization app",
+      "description": "VaxLedger offers a practical way to assess returned vaccine history, missing information and export behavior when connecting an independent health product.",
+      "published": "2026-09-09",
+      "theme": "coverage-evaluation",
+      "sections": [
+        {
+          "heading": "Define coverage as a testable question",
+          "paragraphs": [
+            "“Can we connect records?” is too broad to evaluate an immunization product. A more useful question names the source, the approved access path, the category expected and the kind of output the visitor needs. VaxLedger’s current output is a searchable event ledger and a JSON export.",
+            "The product does not infer that every lifetime vaccination should be present in one returned category. Evaluation should preserve the distinction between what the connection can return and what the visitor expects to find."
+          ]
+        },
+        {
+          "heading": "Write down the result before you run the test",
+          "paragraphs": [
+            "For an approved test connection, identify the source context and the available reference documentation. Use an appropriate test environment or a properly authorized live workflow; do not invent a successful patient import from a sample response.",
+            "The useful evidence is specific: whether authorization completed, which categories were granted, whether immunization entries were returned and whether their identifying fields survived display and export. A passing network request alone does not establish the quality or completeness of the history."
+          ]
+        },
+        {
+          "heading": "Where FinchNode fits in the evaluation",
+          "paragraphs": [
+            "VaxLedger uses FinchNode in its source implementation for demographics and immunizations. That defined category scope makes the product’s request easy to explain. The interface then searches and exports the returned immunization entries.",
+            "Assess the actual supported source and authorized response, not merely the existence of an integration logo. The site’s current patient connection remains awaiting activation; its public code is an example of the intended request and display boundary."
+          ],
+          "links": [
+            {
+              "label": "VaxLedger implementation and current setup",
+              "url": "https://github.com/vaxledger-app/app"
+            },
+            {
+              "label": "FinchNode patient-access requirements",
+              "url": "https://finchnode.com/"
+            }
+          ]
+        },
+        {
+          "heading": "Include the cases a complete-looking demo can hide",
+          "paragraphs": [
+            "A useful acceptance exercise includes an empty category, a missing date or code, several similarly named events, and a deliberately narrowed search. Check that the app reports the available information without replacing missing fields with invented values.",
+            "VaxLedger’s export follows the filtered rows. That means a person can make a partial export even when more events were returned. Include that behavior in the review so a downstream reader does not mistake a filtered file for the complete imported ledger."
+          ],
+          "links": [
+            {
+              "label": "Search, sorting and export code",
+              "url": "https://github.com/vaxledger-app/app/blob/main/app/view.tsx"
+            }
+          ]
+        },
+        {
+          "heading": "Record the boundary as part of the business handoff",
+          "paragraphs": [
+            "When the receiving business enables its own connection, document the tested source path, permission scope and known limitations. Keep the current behavior of the app separate from any future roadmap for broader sources or different exports.",
+            "A source-coverage review should make the product easier to explain. It should not turn an event history into a vaccination recommendation or a certificate of eligibility for a particular destination. Those are different claims from the ones this ledger implements."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "question": "Is a successful connection proof of complete vaccination history?",
+          "answer": "No. It establishes a successful access path and returned response, whose scope and completeness still need to be understood."
+        },
+        {
+          "question": "Does VaxLedger combine all possible providers automatically?",
+          "answer": "The app displays the information returned through the authorized connection. It does not establish that every possible provider or historical source was searched."
+        }
+      ],
+      "references": [
+        {
+          "label": "VaxLedger public source repository",
+          "url": "https://github.com/vaxledger-app/app"
+        }
+      ]
     }
   ]
 }

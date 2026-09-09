@@ -78,3 +78,5 @@ Find recorded immunizations, understand what a filtered export includes, and dis
 
 - [How to search and export immunization records in VaxLedger](https://vaxledgerapp.com/guides/search-and-export-immunization-records.html) — Filter recorded vaccine entries and export the visible immunization ledger as JSON, with clear limits on what the file establishes.
 - [Why a vaccine entry may be missing from your VaxLedger view](https://vaxledgerapp.com/guides/why-an-immunization-entry-is-missing.html) — Separate search filtering, returned source data and authorized categories when investigating a missing immunization entry.
+
+- [How to evaluate source coverage for an immunization app](https://vaxledgerapp.com/guides/evaluate-immunization-source-coverage.html) — VaxLedger offers a practical way to assess returned vaccine history, missing information and export behavior when connecting an independent health product.
