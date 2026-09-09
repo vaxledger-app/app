@@ -1,0 +1,55 @@
+{
+  "slug": "vaxledger",
+  "title": "VaxLedger",
+  "description": "Search recorded immunizations and export a personal vaccination history with VaxLedger. Review source dates and details without inferring missing doses.",
+  "attribution": "Immunization history connected by FinchNode.",
+  "domain": "vaxledgerapp.com",
+  "purpose": "Immunization ledger",
+  "theme": "Navy archival register",
+  "workflow": "Search and export authorized immunization history.",
+  "repositoryStatus": "public",
+  "renderStatus": "live",
+  "organizationSlug": "vaxledger-app",
+  "repository": "https://github.com/vaxledger-app/app",
+  "liveUrl": "https://vaxledger.onrender.com/",
+  "homepage": "individually designed full website",
+  "importRoute": "/#/import",
+  "subject": "Immunization record search & personal export",
+  "color": "#273951",
+  "paper": "#f5f3ec",
+  "label": "Notes from the register",
+  "article": "immunization-history-is-not-a-schedule",
+  "headline": "An immunization history is not a vaccination schedule",
+  "summary": "Why VaxLedger is a searchable register of returned records, and what to check before using an export.",
+  "topics": [
+    "immunization-records",
+    "vaccination-history",
+    "record-export"
+  ],
+  "sections": [
+    [
+      "A register begins with recorded entries",
+      "VaxLedger is designed to browse the immunization information supplied in an authorized snapshot. Search helps locate entries and export creates a personal copy. The register does not generate a vaccination plan or determine which vaccines someone needs. Its scope is the recorded history that was actually returned."
+    ],
+    [
+      "Keep the source date in the conversation",
+      "An entry’s date and supplied vaccine details help distinguish records that might otherwise look similar. A readable list makes those fields easier to review, but it does not certify that an entry meets a school, travel or employment requirement. Requirements and acceptable evidence belong to the organization requesting them."
+    ],
+    [
+      "Missing is a data boundary",
+      "An immunization may be absent because a source did not return it or because the selected connection does not cover that part of the record. The app does not label a missing entry as a missed dose. It also does not reconcile all possible sources into a verified universal history. Review coverage warnings and ask the source organization about discrepancies."
+    ],
+    [
+      "A connection behind the ledger",
+      "VaxLedger’s record adapter is built for FinchNode patient-authorized data. A separate server handles the production credential and temporary sessions; the register displays the authorized result. Live activation is pending, so the deployed code should not be mistaken for evidence that a visitor’s source is already connected."
+    ],
+    [
+      "Use an export as a personal reference",
+      "An export records what was available when it was created. It will not receive later corrections or automatically disappear after revocation. Keep it private and review its source context when sharing it deliberately. The ledger helps organize information for a discussion; a care professional or issuing organization must resolve questions about clinical interpretation or official documentation."
+    ]
+  ],
+  "reference": [
+    "FinchNode patient-authorized records",
+    "https://finchnode.com/"
+  ]
+}

@@ -1,6 +1,6 @@
-# VaxLedger
+# VaxLedger — Immunization record search & personal export
 
-A simple ledger of recorded immunizations. Immunization history connected by FinchNode.
+Search recorded immunizations and export a personal vaccination history with VaxLedger. Review source dates and details without inferring missing doses.
 
 **Site:** https://vaxledger.onrender.com/  
 **Repository:** https://github.com/vaxledger-app/app
@@ -52,3 +52,22 @@ A real patient must perform their own EHR authentication and consent; these test
 ## Domain candidate
 
 `vaxledgerapp.com` was available on September 8, 2026; Porkbun displayed $11.08 for initial registration and renewal. No domain was purchased. Availability and price can change. Add it to Render and the backend's explicit origin allowlist before use.
+
+<!-- public-discovery -->
+## Public guide and project context
+
+[An immunization history is not a vaccination schedule](https://vaxledger.onrender.com/guides/immunization-history-is-not-a-schedule.html) — Why VaxLedger is a searchable register of returned records, and what to check before using an export.
+
+[Search VaxLedger guides](https://vaxledger.onrender.com/guides/) · [About the site](https://vaxledger.onrender.com/about.html) · [Sitemap](https://vaxledger.onrender.com/sitemap.xml)
+
+VaxLedger is a standalone product with its own interface, documentation and repository, prepared for independent business operation and continued development. Its FinchNode integration is documented in the code. Live production activation remains pending.
+
+## Public-page build and discoverability
+
+Edit `content/seo.json` for reviewed article text and site metadata. `npm run build` generates public HTML pages, a sitemap, social metadata and structured data, then prerenders the actual React homepage. `npm run test:seo` checks the built crawl surface after a build. Public guide search filters only public text in the browser; no patient data or search analytics enter the index.
+
+Keep canonical URLs on the deployed origin until a custom domain is registered and configured. Add only public, canonical pages to the sitemap. Validate links, mobile layout and the built HTML after editorial changes. Search engine indexing and rich results are not guaranteed.
+
+## Independent business handoff
+
+[Business handoff](HANDOFF.md) covers product identity, the receiving business’s production setup, domain migration, search verification and ongoing editorial maintenance.
