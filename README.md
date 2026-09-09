@@ -71,3 +71,10 @@ Keep canonical URLs on the custom domain configured in `content/seo.json`. Add o
 ## Independent business handoff
 
 [Business handoff](HANDOFF.md) covers product identity, the receiving business’s production setup, domain migration, search verification and ongoing editorial maintenance.
+
+## More product guides
+
+Find recorded immunizations, understand what a filtered export includes, and distinguish missing results from a complete vaccination history.
+
+- [How to search and export immunization records in VaxLedger](https://vaxledgerapp.com/guides/search-and-export-immunization-records.html) — Filter recorded vaccine entries and export the visible immunization ledger as JSON, with clear limits on what the file establishes.
+- [Why a vaccine entry may be missing from your VaxLedger view](https://vaxledgerapp.com/guides/why-an-immunization-entry-is-missing.html) — Separate search filtering, returned source data and authorized categories when investigating a missing immunization entry.

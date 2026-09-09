@@ -33,7 +33,7 @@
     ],
     [
       "Keep the source date in the conversation",
-      "An entry\u2019s date and supplied vaccine details help distinguish records that might otherwise look similar. A readable list makes those fields easier to review, but it does not certify that an entry meets a school, travel or employment requirement. Requirements and acceptable evidence belong to the organization requesting them."
+      "An entry’s date and supplied vaccine details help distinguish records that might otherwise look similar. A readable list makes those fields easier to review, but it does not certify that an entry meets a school, travel or employment requirement. Requirements and acceptable evidence belong to the organization requesting them."
     ],
     [
       "Missing is a data boundary",
@@ -41,7 +41,7 @@
     ],
     [
       "A connection behind the ledger",
-      "VaxLedger\u2019s record adapter is built for FinchNode patient-authorized data. A separate server handles the production credential and temporary sessions; the register displays the authorized result. Live activation is pending, so the deployed code should not be mistaken for evidence that a visitor\u2019s source is already connected."
+      "VaxLedger’s record adapter is built for FinchNode patient-authorized data. A separate server handles the production credential and temporary sessions; the register displays the authorized result. Live activation is pending, so the deployed code should not be mistaken for evidence that a visitor’s source is already connected."
     ],
     [
       "Use an export as a personal reference",
@@ -52,5 +52,117 @@
     "FinchNode patient-authorized records",
     "https://finchnode.com/"
   ],
-  "googleVerification": "TMdY5YFKPrSoVv3fC5iyCopvPVAm9JPLyi2OVYoBrOk"
+  "googleVerification": "TMdY5YFKPrSoVv3fC5iyCopvPVAm9JPLyi2OVYoBrOk",
+  "guideIntro": "Find recorded immunizations, understand what a filtered export includes, and distinguish missing results from a complete vaccination history.",
+  "finchnodeContext": "VaxLedger uses FinchNode to request the immunization category and displays the returned events as a ledger. Search and JSON export are VaxLedger features; the connection does not turn the ledger into an official certificate or a vaccination schedule.",
+  "articles": [
+    {
+      "slug": "search-and-export-immunization-records",
+      "title": "How to search and export immunization records in VaxLedger",
+      "description": "Filter recorded vaccine entries and export the visible immunization ledger as JSON, with clear limits on what the file establishes.",
+      "published": "2026-09-09",
+      "sections": [
+        {
+          "heading": "Search by the displayed vaccine label",
+          "paragraphs": [
+            "The search box filters the labels in the returned immunization list. Start with a short recognizable part of the label and clear the field to restore the full ledger. The entry count describes the current filtered view, not the number of doses in a recommended series."
+          ]
+        },
+        {
+          "heading": "Read the entry before exporting",
+          "paragraphs": [
+            "Each row presents a label, the available date, source context, status and a code when supplied. These fields describe the returned record. The app does not decide whether an entry meets a school, employment or travel requirement."
+          ],
+          "items": [
+            "Check the search field for an active filter.",
+            "Review the number of visible entries.",
+            "Inspect the source entries if a label or date needs clarification.",
+            "Clear the filter if you intend to export every returned immunization."
+          ]
+        },
+        {
+          "heading": "Know that the export follows the filter",
+          "paragraphs": [
+            "“Export ledger” creates a JSON file containing the rows currently visible after filtering. The file also labels the source and states that it is not for clinical use. A filtered export can intentionally leave out other returned entries, so keep that distinction clear when using the file later."
+          ]
+        },
+        {
+          "heading": "Check the destination’s requirements separately",
+          "paragraphs": [
+            "A personal JSON export is not an official vaccination certificate. Ask the receiving organization what form of documentation it accepts and obtain source documentation where required. The public site explains the workflow; live authorized imports remain pending activation."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "question": "Does exporting include hidden search results?",
+          "answer": "No. VaxLedger exports the filtered rows. Clear the search first to include all returned entries."
+        },
+        {
+          "question": "Can the ledger tell me which vaccination is due?",
+          "answer": "No. The implemented product organizes recorded history and does not calculate schedules or recommendations."
+        }
+      ],
+      "references": [
+        {
+          "label": "VaxLedger interface implementation",
+          "url": "https://github.com/vaxledger-app/app/blob/main/app/view.tsx"
+        }
+      ]
+    },
+    {
+      "slug": "why-an-immunization-entry-is-missing",
+      "title": "Why a vaccine entry may be missing from your VaxLedger view",
+      "description": "Separate search filtering, returned source data and authorized categories when investigating a missing immunization entry.",
+      "published": "2026-09-09",
+      "sections": [
+        {
+          "heading": "First check whether the view is filtered",
+          "paragraphs": [
+            "A search can hide a record without removing it from the imported data. Clear the vaccine search and compare the entry count. This is the simplest way to distinguish a narrow view from an empty returned ledger."
+          ]
+        },
+        {
+          "heading": "Then identify the boundary of the imported history",
+          "paragraphs": [
+            "The ledger only contains immunization entries returned to this application. An absent event cannot establish that a person never received a vaccine. Source availability, the selected connection and the information returned for the authorized category define what the app can display."
+          ]
+        },
+        {
+          "heading": "Use source context to frame the next question",
+          "paragraphs": [
+            "If an expected event is absent, identify which source you expected it to come from and consult that source’s own records. VaxLedger does not search every provider automatically, create replacement entries, or combine personal recollections with imported events."
+          ]
+        },
+        {
+          "heading": "Do not turn the gap into a schedule",
+          "paragraphs": [
+            "An incomplete ledger is a reason to clarify the documentation, not a basis for the app to recommend a dose. The software deliberately stops at history inspection and export. Future product changes should preserve a visible distinction between source events, user-added notes and any separately validated clinical workflow."
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "question": "Does an empty ledger mean no vaccinations were recorded anywhere?",
+          "answer": "No. It describes the information available in this app’s current returned view."
+        },
+        {
+          "question": "Can I type in a missing dose?",
+          "answer": "The current interface has no manual immunization-entry feature."
+        }
+      ],
+      "finchnode": {
+        "heading": "A focused FinchNode request",
+        "text": "VaxLedger’s backend scope is limited to demographics and immunizations through FinchNode. The ledger works with that authorized response rather than treating access to one category as proof of a complete lifetime history.",
+        "label": "FinchNode’s patient-authorized API",
+        "url": "https://finchnode.com/"
+      },
+      "references": [
+        {
+          "label": "VaxLedger interface implementation",
+          "url": "https://github.com/vaxledger-app/app/blob/main/app/view.tsx"
+        }
+      ]
+    }
+  ]
 }
